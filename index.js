@@ -28,6 +28,6 @@ app.use('/charges', require('./routes/charges'));
 
 //arrancar la app
 app.listen(PORT, () => {
-    // cronJob()
+    cronJob()
     // `http server Corriendo desde el puerto ${PORT}`);
 });
