@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 //importar rutas
 app.use('/aut', require('./routes/aut'));
-// app.use('/charges', require('./routes/charges'));
+app.use('/charges', require('./routes/charges'));
 
 //arrancar la app
 app.listen(PORT, () => {
