@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 //puerto
-const PORT = 4000;
+const PORT = 8080;
 
 app.get('/', (req, res) => {
     res.send('Hola Robert');
