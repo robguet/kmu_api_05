@@ -19,14 +19,19 @@
   },
   "homepage": "https://github.com/robguet/Express-Server#readme",
   "dependencies": {
+    "axios": "^1.2.0",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "express-validator": "^6.14.0",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.15"
+    "node-cron": "^3.0.2",
+    "nodemon": "^2.0.20"
   }
 }

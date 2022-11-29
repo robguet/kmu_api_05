@@ -1,40 +1,30 @@
 const { Router } = require('express');
-const { check } = require('express-validator');
-const { validateFields } = require('../middlewares/fieldsValidator');
-const { validateWT } = require('../middlewares/jwtValidator');
-const autController = require('../controllers/authController');
+const { validarCampos } = require('../middlewares/validarCampos');
+const { validarJWT, } = require('../middlewares/validar-jwt');
+const autController = require('../controllers/autController');
 const router = Router();
 
-router.get(
-    '/ok',
-    autController.query
-);
-
 router.post(
-    '/signup',
-    [
-        check('email', 'Email is mandatory').not().isEmpty(),
-        check('email', 'Email not valid').isEmail(),
-        check('password', 'Password not valid').isLength({ min: 5 }),
-        validateFields
-    ],
+    '/register',
     autController.signUp
 )
 
 router.post(
-    '/sigin',
-    [
-        check('email', 'Email is mandatory').not().isEmpty(),
-        check('email', 'Email not valid').isEmail(),
-        check('password', 'Password not valid').isLength({ min: 5 }),
-        validateFields
-    ],
+    '/login',
     autController.signIn
 )
 
-router.get('/newToken', validateWT, autController.newToken);
+router.post(
+    '/',
+    autController.query
+)
 
+router.get('/newToken', validarJWT, autController.newToken);
 
+router.post('/update/user/:id', autController.updateProfile);
 
+router.post('/cutOff', autController.updateCutOffDate);
+
+router.get('/message', autController.whatsapp);
 
 module.exports = router;

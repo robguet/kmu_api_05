@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { dbConnection } = require('./config/db')
+const cronJob = require('./cron-jobs/cron');
 
 //crear el servidor
 const app = express();
@@ -12,19 +13,21 @@ dbConnection()
 app.use(cors());
 
 //habilitar express.json
-app.use(express.json({ extended: true }));
+app.use(express.json());
 
 //puerto
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 
 app.get('/', (req, res) => {
-    res.send('Hola Mundo');
+    res.send('Hola Robert');
 });
 
 //importar rutas
 app.use('/aut', require('./routes/aut'));
+// app.use('/charges', require('./routes/charges'));
 
 //arrancar la app
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
+    // cronJob()
     // `http server Corriendo desde el puerto ${PORT}`);
 });
