@@ -34,7 +34,7 @@ const signUp = async (req, res) => {
       const qInsertBillingUser = `INSERT INTO Users_Cards SET ?`;
       connection.query(
         qInsertBillingUser,
-        { FK_idUser: results.insertId, fk_idCard: "3", cutoffDate: "1" },
+        { FK_idUser: results.insertId, fk_idCard: "3", cutoffDate: "1", pendingBalance: "0", isActive: "1" },
         async (err) => {
           if (err) {
             return console.error(err.message);
@@ -79,6 +79,7 @@ const signIn = async (req, res) => {
 const newToken = async (req, res) => {
   try {
     const uid = req.uid;
+    console.log(req.uid, 'newtoken')
     const token = await generarJWT(uid);
 
     //?QUERY GET USER INFORMATION AND BILLING INFORMATION
