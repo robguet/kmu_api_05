@@ -194,7 +194,7 @@ const updateProfile = (req, res) => {
     if (cardsToAdd.length > 0) {
       cardsToAdd.map((card) => {
         //?VERIFY THAT EXISTS THE CARD IN THE DB
-        const stmtExistsCard = `SELECT * FROM Users_Cards WHERE FK_idUser = 1 AND fk_idCard = ${card[1]}`;
+        const stmtExistsCard = `SELECT * FROM Users_Cards WHERE FK_idUser = ${id} AND fk_idCard = ${card[1]}`;
         connection.query(stmtExistsCard, async (err, card) => {
           if (err) {
             console.log(err);
@@ -236,6 +236,7 @@ const updateCutOffDate = (req, res) => {
   for (var i = 0; i < cutOffDateCardsArray.length; i++) {
     qUpdateCutoffdates += sql;
   }
+  console.log(qUpdateCutoffdates);
   //?UPDATE CUTOFFDATE
   connection.query(qUpdateCutoffdates, cutOffDateCards, function (err, rows) {
     if (err) {
