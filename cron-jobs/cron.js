@@ -1,12 +1,12 @@
 var cron = require('node-cron');
-const { updatemonthlyCharges } = require('../helper/db-helper');
+const { updateMonthlyCharges } = require('../helper/db-helper');
 
 
 module.exports = () => {
 
-    cron.schedule('0 0 0 * * *', () => {
+    cron.schedule('12 * * * * *', () => {
         console.log('running at 12AM');
-        updatemonthlyCharges()
+        updateMonthlyCharges()
     });
 }
 
